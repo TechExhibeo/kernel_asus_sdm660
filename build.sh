@@ -2,6 +2,7 @@
 
 #set -e
 
+HOME=/home/legacy
 ## Copy this script inside the kernel directory
 KERNEL_DEFCONFIG=X00TD_defconfig
 ANYKERNEL3_DIR=$PWD/AnyKernel3/
@@ -40,7 +41,7 @@ echo -e "$blue***********************************************"
 echo "          BUILDING KERNEL          "
 echo -e "***********************************************$nocol"
 make $KERNEL_DEFCONFIG O=out
-make -j$(nproc --all) O=out LLVM=1\
+make -j8 O=out LLVM=1\
 		ARCH=arm64 \
 		AS="$HOME/trb_clang/bin/llvm-as" \
 		CC="$HOME/trb_clang/bin/clang" \
